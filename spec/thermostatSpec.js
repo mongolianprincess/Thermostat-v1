@@ -39,6 +39,29 @@ describe('Thermostat',function(){
     expect(thermostat.isPowerSavingModeOn()).toBe(false);
   });
 
+  it('can turn power saving mode back on',function(){
+    thermostat.powerSavingModeOff();
+    expect(thermostat.isPowerSavingModeOn()).toBe(false);
+    thermostat.switchPowerSavingModeOn();
+    expect(thermostat.isPowerSavingModeOn()).toBe(true);
+  });
+
+  it('has max temperature at 25 when PSM is on',function() {
+    thermostat.isPowerSavingModeOn();
+    for (var i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(25);
+  });
+
+  it('has max temperature at 32 when PSM is off',function() {
+    thermostat.powerSavingModeOff();
+    for (var i = 0; i < 13; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(32);
+  });
+
   it('',function() {
 
   });
