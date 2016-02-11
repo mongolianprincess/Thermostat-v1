@@ -17,7 +17,8 @@ describe('Thermostat',function(){
     expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
 
-  it('',function() {
-
+  it('can decrease the temperature with the down button',function() {
+    thermostat.down();
+    expect(thermostat.getCurrentTemperature()).toEqual(19);
   });
 });
